@@ -1,36 +1,40 @@
-package LabWork;
-class Person {
-    String name;
-    int age;
-
-    public Person(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
-
-    public void speak() {
-        System.out.println("Person is speaking...");
-    }
-}
-
-class Student extends Person {
-    int grade;
-
-    public Student(String name, int age, int grade) {
-        super(name, age);
-        this.grade = grade;
-    }
-
-    public void study() {
-        System.out.println("Student is studying...");
-    }
-}
+package LabWork8May;
 
 public class Question2 {
-    public static void main(String[] args) {
-        Student student = new Student("John", 18, 12);
-        student.speak(); // Call speak() from Person class
-        student.study(); // Call study() from Student class
-    }
-}
+	    public static void main(String[] args) {
+	        // Create two thread objects
+	        Thread thread1 = new Thread(new GoodMorning());
+	        Thread thread2 = new Thread(new Welcome());
 
+	        // Start both threads
+	        thread1.start();
+	        thread2.start();
+	    }
+	}
+
+	class GoodMorning implements Runnable {
+	    public void run() {
+	        while (true) {
+	            System.out.println("Good morning");
+	            try {
+	                Thread.sleep(1000); // Wait for 1 second
+	            } catch (InterruptedException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    }
+	}
+
+	class Welcome implements Runnable {
+	    public void run() {
+	        while (true) {
+	            System.out.println("Welcome");
+	            try {
+	                Thread.sleep(200); // Wait for 200 milliseconds
+	            } catch (InterruptedException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    }
+	}
+	

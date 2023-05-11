@@ -1,38 +1,41 @@
-package LabWork;
-class Vehicle {
-    String brand;
-    String model;
-    int year;
-
-    public Vehicle(String brand, String model, int year) {
-        this.brand = brand;
-        this.model = model;
-        this.year = year;
-    }
-
-    public void drive() {
-        System.out.println("Vehicle is driving...");
-    }
-}
-
-class Car extends Vehicle {
-    String color;
-
-    public Car(String brand, String model, int year, String color) {
-        super(brand, model, year);
-        this.color = color;
-    }
-
-    public void honk() {
-        System.out.println("Car is honking...");
-    }
-}
+package LabWork8May;
 
 public class Question1 {
-    public static void main(String[] args) {
-        Car car = new Car("Toyota", "Camry", 2020, "Blue");
-        car.drive(); // Call drive() from Vehicle class
-        car.honk(); // Call honk() from Car class
-    }
-}
+	//public class ContinuousPrinting {
+	    public static void main(String[] args) {
+	        // Create two thread objects
+	        Thread thread1 = new Thread(new GoodMorning());
+	        Thread thread2 = new Thread(new Welcome());
+
+	        // Start both threads
+	        thread1.start();
+	        thread2.start();
+	    }
+	}
+
+	class GoodMorning implements Runnable {
+	    public void run() {
+	        while (true) {
+	            System.out.println("Good morning");
+	            try {
+	                Thread.sleep(2000); // Wait for 2 second
+	            } catch (InterruptedException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    }
+	}
+
+	class Welcome implements Runnable {
+	    public void run() {
+	        while (true) {
+	            System.out.println("Welcome");
+	            try {
+	                Thread.sleep(2000); // Wait for 2 second
+	            } catch (InterruptedException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    }
+	}
 
